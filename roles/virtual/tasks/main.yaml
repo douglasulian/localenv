@@ -16,6 +16,7 @@
     name: virtualbox-5.1
     state: latest      
 
-#- name: Install vagrant
-#  become: yes
-#  shell: git config --global user.email "douglasulian@hotmail.com" 
+- name: Install vagrant
+  become: yes
+  apt:
+    name: vagrant=1.8.1+dfsg-1
