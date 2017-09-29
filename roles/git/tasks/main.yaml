@@ -1,3 +1,8 @@
+- name: Include git variables
+  include_vars:
+    file: main.yaml
+    name: git_user
+
 - name: Update apt cache
   become: yes
   apt: update_cache=yes cache_valid_time=86400
@@ -6,4 +11,8 @@
   become: yes
   apt:
     name: git
-    state: installed       
+    state: installed      
+
+- name: Set git user
+  become: yes
+  shell: git config --global user.email "douglasulian@hotmail.com" 
