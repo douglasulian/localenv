@@ -1,0 +1,6 @@
+- name: COnfigure local host
+  hosts: local
+
+  roles:
+    - common
+    - git
