@@ -7,3 +7,24 @@
   apt:
     name: vim
     state: installed       
+
+- name: Update apt repos with Google Chrome repo
+  become: yes
+  apt_repository:
+    repo: deb http://dl.google.com/linux/deb/ stable main
+    state: present
+    update_cache: yes
+
+- name: Add Google's apt-key so that packet downloaded from repo is trusted
+  become: yes
+  apt_key:
+    id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991 #Google, Inc. Linux Package Signing Key <linux-packages-keymaster@google.com> 
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+- name: Install Google Chrome
+  become: yes
+  apt:
+    name: google-chrome-stable
+    state: latest      
+
+
