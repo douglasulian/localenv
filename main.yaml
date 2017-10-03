@@ -2,6 +2,7 @@
   hosts: local
 
   roles:
-    - common
+#    - common
 #    - git
-    - virtual
+#    - virtual
+    - docker

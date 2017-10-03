@@ -44,3 +44,11 @@
   apt: name={{item}} state=latest
   with_items:
     - python-pip
+
+- name: Install notepadqq
+  block:
+   - apt_repository: repo='ppa:notepadqq-team/notepadqq'
+   - apt: name=notepadqq state=latest
+  become: yes    
+
+
