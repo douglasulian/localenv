@@ -51,4 +51,32 @@
    - apt: name=notepadqq state=latest
   become: yes    
 
+- name: Install Openconnect
+  become: yes
+  apt:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - openconnect 
+    - lib32ncurses5 
+    - lib32tinfo5 
+    - lib32z1
+    - libc6-i386
+    - libpkcs11-helper1 
+    - openvpn 
+    - vpnc-scripts
 
+- name: Creates $HOME/bin
+  file:
+    path: '$HOME/bin'
+    state: directory
+    mode: 0700
+
+- name: Move binaries
+  copy:
+    src: 'files/{{ item.filename }}'
+    dest: '$HOME/bin/'
+    mode: 0700
+  with_items:
+    - { filename: 'rbsvpnup' }
+    - { filename: 'rbsvpndown' }
