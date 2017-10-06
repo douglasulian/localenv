@@ -39,12 +39,6 @@
     name: google-chrome-stable
     state: latest      
 
-- name: Install pip
-  become: yes
-  apt: name={{item}} state=latest
-  with_items:
-    - python-pip
-
 - name: Install notepadqq
   block:
    - apt_repository: repo='ppa:notepadqq-team/notepadqq'

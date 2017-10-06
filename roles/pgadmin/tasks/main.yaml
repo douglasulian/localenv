@@ -1,0 +1,16 @@
+- name: Pull chorss/docker-pgadmin image (https://hub.docker.com/r/chorss/docker-pgadmin4)
+  become: yes
+  docker_image:
+    name: chorss/docker-pgadmin4
+    pull: yes
+
+- name: Creates a data container for pdAdmin4
+  become: yes
+  docker_container:
+    name: pgadmin
+    image: chorss/docker-pgadmin4
+    hostname: pgadmin
+    published_ports: 5050:5050
+    restart: yes
+    volumes:
+       - "/home/douglas/data:/data"

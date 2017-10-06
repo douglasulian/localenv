@@ -1,8 +1,10 @@
-- name: COnfigure local host
+- name: Configure local host
   hosts: local
 
   roles:
+    - pip
     - common
-#    - git
-#    - virtual
-#    - docker
+    - git
+    - virtual
+    - docker
+    - pgadmin
