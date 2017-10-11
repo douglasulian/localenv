@@ -1,0 +1,15 @@
+- name: Configure local host
+  hosts: local
+
+  tasks:
+    - name: Creates a data container for pdAdmin4
+      become: yes
+      docker_container:
+        name: pgadmin
+        image: chorss/docker-pgadmin4
+        hostname: pgadmin
+        published_ports: 5050:5050
+        restart: yes
+        state: started
+        volumes:
+          - "/home/douglas/data:/data"
