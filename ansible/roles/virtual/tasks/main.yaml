@@ -1,0 +1,39 @@
+- name: Update apt repos with latest virtualbox repo
+  become: yes
+  apt_repository:
+    repo: deb http://download.virtualbox.org/virtualbox/debian xenial contrib
+    state: present
+    update_cache: yes
+
+- name: Add Oracle's apt-key so that packet downloaded from virtualbox repo is trusted
+  become: yes
+  apt_key: 
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+
+- name: Install virtualbox
+  become: yes
+  apt:
+    name: virtualbox-5.1
+    state: latest      
+
+#- name: Install vagrant
+#  become: yes
+#  apt:
+#    name: vagrant=1.8.1+dfsg-1
+
+- stat:
+    path: ~/Downloads/vagrant_2.0.0_x86_64.rpm
+  register: vagrant_file_stat
+
+- name: Download vagrant 2.0.0 rpm   
+  get_url:
+    url: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm
+    dest: ~/Downloads/
+    checksum: sha256:0877da75b4c8433e2c48bafd5a01abf455140511b897ee85fe02d9dadc31df11
+  when: vagrant_file_stat.stat.exists is not defined or vagrant_file_stat.stat.exists == False
+
+- name: Install Vagrant 2.0.0 via RPM
+  become: yes
+  yum:
+    name: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm
+    state: present
