@@ -13,4 +13,4 @@
     published_ports: 5050:5050
     restart: yes
     volumes:
-       - "/home/douglas/data:/data"
+       - "/home/douglas/repos/user-clustering-gzh/r-project/data:/data"
