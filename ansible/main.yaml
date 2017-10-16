@@ -2,10 +2,11 @@
   hosts: local
 
   roles:
-#    - pip
-#    - common
-#    - git
-#    - virtual
+    - pip
+    - common
+    - git
+    - virtual
+    - dbeaver
 #    - docker
 #    - pgadmin
-     - pgfutter
+#     - pgfutter

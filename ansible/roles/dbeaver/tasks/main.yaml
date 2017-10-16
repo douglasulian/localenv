@@ -1,0 +1,20 @@
+#- stat:
+#    path: ~/Downloads/dbeaver-ce_latest_amd64.deb
+#    checksum_algorithm: sha256
+#  register: dbeaver_file_stat
+
+#- set_fact:
+#    sha256_value: "{{ item }}"
+#  with_url: https://dbeaver.jkiss.org/files/4.2.3/checksum/dbeaver-ce_4.2.3_amd64.deb.sha256
+
+#- name: Download dbeaver deb   
+#  get_url:
+#    url: https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb
+#    dest: ~/Downloads/
+#    checksum: "sha256:{{ sha256_value }}"
+#  when: dbeaver_file_stat.stat.exists is not defined or dbeaver_file_stat.stat.exists == False or dbeaver_file_stat.stat.sha256 != "sha256:{{ sha256_value }}"
+
+- name: Install latest dbeaver client
+  become: yes
+  apt:
+    deb: https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb
