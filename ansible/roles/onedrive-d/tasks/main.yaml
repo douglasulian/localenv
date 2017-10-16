@@ -1,0 +1,4 @@
+- name: Clone git repository for OneDrive-D
+  git:
+    repo: https://github.com/xybu92/onedrive-d.git
+    dest: ~/repos/
