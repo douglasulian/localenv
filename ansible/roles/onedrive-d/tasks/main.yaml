@@ -1,4 +1,30 @@
+- name: Verifies if OneDrive-D have already been installed
+  stat:
+    path: ~/repos/onedrive-d/already_installed.txt
+  register: st
+
+- name: Install pre-reqs
+  become: yes
+  apt:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - gcc
+    - python3-dev
+    - libssl-dev
+    - inotify-tools
+    - python3-dbus
+  when: not st.stat.exists
+    
 - name: Clone git repository for OneDrive-D
   git:
     repo: https://github.com/xybu92/onedrive-d.git
-    dest: ~/repos/
+    dest: ~/repos/onedrive-d
+  when: not st.stat.exists
+
+- name: Build onedrived
+  shell: python3 ./setup.py install --user > already_installed.txt
+  args:
+    chdir: ~/repos/onedrive-d/
+    creates: already_installed.txt
+  when: not st.stat.exists
