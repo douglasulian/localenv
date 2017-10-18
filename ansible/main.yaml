@@ -7,7 +7,8 @@
 #    - git
 #    - virtual
 #    - dbeaver
-    - onedrive-d
+#    - onedrive-d
 #    - docker
 #    - pgadmin
-#     - pgfutter
+#    - pgfutter
+    - postgresql-client
