@@ -9,6 +9,6 @@
 #    - dbeaver
 #    - onedrive-d
 #    - docker
-#    - pgadmin
+    - pgadmin
 #    - pgfutter
-    - postgresql-client
+#    - postgresql-client

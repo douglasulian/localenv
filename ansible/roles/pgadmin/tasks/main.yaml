@@ -12,5 +12,6 @@
     hostname: pgadmin
     published_ports: 5050:5050
     restart: yes
+    state: started
     volumes:
        - "/home/douglas/repos/user-clustering-gzh/r-project/data:/data"
