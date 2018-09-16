@@ -75,29 +75,8 @@
     - { filename: 'rbsvpnup' }
     - { filename: 'rbsvpndown' }
 
-- name: Add Spotify's apt-key 1 so that packet downloaded from repo is trusted
-  become: yes
-  apt_key:
-    id: BBEBDCB318AD50EC6865090613B00F1FD2C19886
-    keyserver: keyserver.ubuntu.com
-    
-- name: Add Spotify's apt-key 2 so that packet downloaded from repo is trusted
-  become: yes
-  apt_key:
-    id: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-    keyserver: keyserver.ubuntu.com
 
-- name: Update apt repos with Spotify repo
-  become: yes
-  apt_repository:
-    repo: deb http://repository.spotify.com stable non-free
-    state: present
-    update_cache: yes
-    filename: spotify.list
-
-
-- name: Install Spotify
+- name: virtualenv
   become: yes
   apt:
-    name: spotify-client
-    install_recommends: yes
+    name: virtualenv

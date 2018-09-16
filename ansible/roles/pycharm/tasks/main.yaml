@@ -1,0 +1,3 @@
+- name: Install pycharm through snap command
+  become: yes
+  command: snap install pycharm-community --classic

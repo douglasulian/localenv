@@ -3,7 +3,7 @@
 
   roles:
 #    - pip
-#    - common
+    - common
 #    - git
 #    - virtual
 #    - dbeaver
@@ -12,3 +12,4 @@
     - pgadmin
 #    - pgfutter
 #    - postgresql-client
+    - pycharm
